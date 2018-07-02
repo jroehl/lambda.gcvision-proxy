@@ -1,0 +1,39 @@
+service: gcvision-proxy
+
+plugins:
+  - serverless-offline
+  - serverless-domain-manager
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: eu-central-1
+  stage: dev # you can override this via the CLI argument
+  memorySize: 128
+
+custom:
+  # https://github.com/amplify-education/serverless-domain-manager
+  stage: ${opt:stage, self:provider.stage}
+  domains:
+    production: lapi.johannroehl.de
+    dev: dev-lapi.johannroehl.de
+  customDomain:
+    basePath: gcvision
+    domainName: ${self:custom.domains.${self:custom.stage}}
+    stage: ${self:custom.stage}
+    createRoute53Record: false
+
+functions:
+  proxy:
+    handler: handler.proxy
+    events:
+      - http:
+          path: proxy
+          method: post
+          cors: true
+          authorizer:
+            name: authorizer
+            identitySource: method.request.header.Authorization
+            type: token
+  authorizer:
+    handler: handler.authorizer

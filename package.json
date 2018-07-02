@@ -1,0 +1,33 @@
+{
+  "name": "gcvision-proxy",
+  "version": "1.0.0",
+  "main": "handler.js",
+  "license": "MIT",
+  "description": "An aws lambda proxy for the google cloud vision api to work with oauth0 api tokens",
+  "scripts": {
+    "test": "eslint **/*.js && node handler.js",
+    "start:offline": "serverless offline --port 6060 start",
+    "jest": "jest",
+    "deploy": "serverless deploy -s dev",
+    "deploy:prod": "serverless deploy -s production",
+    "logs": "serverless logs -s dev -f sendmail",
+    "logs:prod": "serverless logs -s production -f sendmail"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.10.0",
+    "serverless": "^1.27.3",
+    "serverless-domain-manager": "^2.4.0",
+    "serverless-offline": "^3.25.5"
+  },
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "jsonwebtoken": "^8.3.0",
+    "jwks-rsa": "^1.3.0",
+    "request": "^2.87.0",
+    "request-promise-native": "^1.0.5"
+  }
+}
