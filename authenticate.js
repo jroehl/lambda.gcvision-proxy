@@ -41,7 +41,7 @@ module.exports = async (params) => {
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 10, // Default value
-    jwksUri: process.env.JWKS_URI,
+    jwksUri: auth0.jwksUri,
   });
 
   const getSigningKey = util.promisify(client.getSigningKey);

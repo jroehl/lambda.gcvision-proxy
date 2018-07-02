@@ -10,6 +10,11 @@ provider:
   region: eu-central-1
   stage: dev # you can override this via the CLI argument
   memorySize: 128
+  environment:
+    GCVISION_KEY: ${env:GCVISION_KEY}
+    JWKS_URI: ${env:JWKS_URI}
+    AUDIENCE: ${env:AUDIENCE}
+    TOKEN_ISSUER: ${env:TOKEN_ISSUER}
 
 custom:
   # https://github.com/amplify-education/serverless-domain-manager
