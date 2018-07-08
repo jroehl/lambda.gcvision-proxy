@@ -15,6 +15,9 @@ provider:
     JWKS_URI: ${env:JWKS_URI}
     AUDIENCE: ${env:AUDIENCE}
     TOKEN_ISSUER: ${env:TOKEN_ISSUER}
+    CLIENT_ID: ${env:CLIENT_ID}
+    CLIENT_SECRET: ${env:CLIENT_SECRET}
+    TOKEN: ${env:TOKEN}
 
 custom:
   # https://github.com/amplify-education/serverless-domain-manager
